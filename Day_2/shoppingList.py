@@ -22,7 +22,7 @@ def remove_CartItems():
         # removeAfter_list = [item for item in shop_list if item != remove_item]
         # print(f"Shopping cart:{removeAfter_list}")
         
-        shop_list[:] = [item for item in shop_list if item != remove_item]
+        shop_list[:] = [item for item in shop_list if item != remove_item]#memory efficient change in global list not make copy or local list
         print(f"Shopping cart:{shop_list}")
         
 shopping_list()
