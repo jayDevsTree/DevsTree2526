@@ -4,7 +4,7 @@ def shopping_list():
     item_num= int(input('Enter how many items you want to add: '))
 
     for i in range(item_num):
-        item = input(f'Enter {i+1}th item name: ')
+        item = input(f'Enter  {i+1}th item name: ')
         shop_list.append(item)
         
     is_remove = input('Do you want to remove any item(0/1): ')

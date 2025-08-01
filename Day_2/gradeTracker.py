@@ -20,13 +20,13 @@ def gradeTracker():
             print("Grade D")
         grades.append(marks)
 
-    print("All Grades: ", grades)
+    print("All Grades:", grades)
 
 def avg():
     print("Average Marks:", sum(grades) / student_count)
 
 def highest_marks():
-    print("Highest Marks:", max(grades))
+    print("Highest Marks: ", max(grades))
 
 def lowest_marks():
     print("Lowest Marks:", min(grades))
