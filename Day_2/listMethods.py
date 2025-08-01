@@ -30,7 +30,7 @@ print(s2)
 
 
 
-names = ['Jay', 'Patil', 'Dhruv', 'Prajapati', 'vrutik', 'koladiya', 'rajesh', 'suthar', ]
+names = ['Jay', 'Patil', 'Dhruv', 'Prajapati', 'vrutik', 'koladiya', 'rajesh', 'suthar']
 # names_v=[]
 # for i in names:
 #     if 'v' in i and len(i)>5:
