@@ -16,7 +16,7 @@ def shopping_list():
 def remove_CartItems():
     remove_item = input('Enter the item you want to remove: ')
     if remove_item not in shop_list:
-        print('Item not found')
+        print('Item not found ')
     else:
     # shop_list.remove(remove_item)
         # removeAfter_list = [item for item in shop_list if item != remove_item]
