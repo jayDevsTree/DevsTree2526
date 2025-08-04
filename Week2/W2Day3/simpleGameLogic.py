@@ -9,7 +9,10 @@ def game():
     #           player2 - player 1 == 1 or 2 --> player 2 wins
     
     # complicated --> (player 1 - player 2) %3 ==1 this have -2% 3 ==1 true and 1== 1 for player 1
-    #                                                   and -1% 3 == 2 true and 2 == 1 for player 2
+    # just check user must enter 1,2,3 (right input)                                                and -1% 3 == 2 true and 2 == 1 for player 2
+    if u1 not in [1, 2, 3] or u2 not in [1, 2, 3]:
+        print("Invalid Input")
+        return
     
     if result == 0:
         print("Tie")
