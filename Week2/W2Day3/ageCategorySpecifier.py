@@ -12,7 +12,7 @@ def ageCatergorySpecifier(age):
     elif age >=60:
         print("Senior")
     else:
-        print("Adult")
+        print("Adult ")
 
 age = int(input("Enter your age: "))
 ageCatergorySpecifier(age)

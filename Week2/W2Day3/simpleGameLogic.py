@@ -16,6 +16,6 @@ def game():
     elif result in [1, -2]:
         print("User 1 Wins")
     else:
-        print("User 2 Wins")
+        print("User 2 Wins ")
 
 game()
