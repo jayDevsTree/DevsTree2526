@@ -1,1 +1,1 @@
-print("Welcome to Coordinates System using tuples ")
+print("Welcome to Coordinates System using tuples")
