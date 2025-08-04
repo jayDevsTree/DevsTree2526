@@ -1,0 +1,2 @@
+if sentence == "".strip():
+        r
