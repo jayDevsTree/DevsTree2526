@@ -59,3 +59,34 @@ def http_error(status):
         case _:
             return "Something's wrong with the internet"
 print(http_error(418))
+
+# combo = []
+# for i in [1,2,3]:
+#     for j in [3,1,4]:
+#         if i !=j :
+#             combo.append((i,j))
+# print(combo)
+
+
+pairs =[(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+print(pairs)
+
+vec = [[1,2,3],[4,5,6],[7,8,9]]
+# for elm in vec:
+#     for num in elm:
+#         print(num , end=" ")
+print([num for elm in vec for num in elm])
+
+matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+]
+print([[row[i] for row in matrix] for i in range(4)])
+# res = []
+# for i in range(4):
+#     col= []
+#     for row in matrix:
+#         col.append(row[i])
+#     res.append(col)
+# print(res)
