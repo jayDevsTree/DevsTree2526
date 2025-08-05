@@ -1,0 +1,1 @@
+this is a file that check reading and writing mode in python
