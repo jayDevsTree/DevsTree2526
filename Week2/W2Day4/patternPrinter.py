@@ -42,3 +42,17 @@ for i in range ( rows):
 
 for i in range(rows-2 , -1 , -1): # range(start, stop, step) and row - 1 same level of uper triangle last line so -1 more(-1 + -1 = -2) is set in daimond and same like range lst element is exclude therefore -1 gone until 0 and , -1 represent range gone reverse order 
     print(" " * (rows - i - 1) + "*" * (2 * i + 1) + " " * (rows - i - 1))
+    
+print("Hollow Diamond:")
+print()
+            
+for i in range (rows):
+    if i == 0:
+        print(" " * (rows - i-1 ) + "*")
+    else:
+        print(" "*(rows-i-1)+ "*" + " "*(2*(i-1)+1) +"*" + " "*(rows-i-1) )
+for i in range(rows -2 ,-1,-1):
+    if i == 0:
+        print(" "*(rows-1)+"*")
+    else:
+        print(" "*(rows-i-1)+ "*" + " "*(2*(i)-1)+"*")
