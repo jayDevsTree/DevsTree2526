@@ -19,6 +19,7 @@ secondLargest_l2 = lambda originalList :[ secondLargest_sublist[-2] for secondLa
 print(secondLargest_l2(l2))
 
 tables = [i for i in range(1,11)]
+
 print(tables)
 
 table_print = lambda number : [number*iterable for iterable in range(1,11)]
