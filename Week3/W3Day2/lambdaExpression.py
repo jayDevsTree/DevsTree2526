@@ -21,6 +21,18 @@ print(secondLargest_l2(l2))
 tables = [i for i in range(1,11)]
 print(tables)
 
-table_print = lambda number : [number*iterable for iterable in range(1,11) ]
+table_print = lambda number : [number*iterable for iterable in range(1,11)]
 print(table_print(5))
 
+numbers = [ 1,2,3,4,5]
+squared = list(map(lambda x : x*x , numbers))
+print("Map: ",squared)
+
+names = ['jay','j ', 'jj', 'hh','de','   d   ', 'Dhruv', 'meet']
+
+names_strip = list(map(lambda name : name.strip(), names))
+moreThanThree = list(filter(lambda name : len(name)>=3,names_strip))
+print("Filter: ",moreThanThree)
+
+print('Sorted(length) :',list(sorted(names, key = lambda x : len(x))))
+print('Sorted(length with strip) :',list(sorted(names_strip, key = lambda x : len(x))))
