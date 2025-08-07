@@ -32,6 +32,8 @@ print(add(3, 5))
 
 # this run twice using decorator which return type of function
 def run_twice(func):
+   
+        
     def wrapper(*args, **kwargs):
         func(*args, **kwargs)
         return func(*args, **kwargs)
@@ -93,6 +95,7 @@ greet("Jay")
 
 
 
+
 # property(Getter and Setter)
 
 class Student:
@@ -130,3 +133,7 @@ def slow_function():
     print("Finished!")
 
 slow_function()
+
+
+list_l1 = [1,2,3,5,'Hello',[1,23]]
+print(list_l1)
