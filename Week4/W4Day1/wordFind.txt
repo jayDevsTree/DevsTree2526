@@ -1,0 +1,4 @@
+hello my name is jay ,
+this is a sample file which created cause it help to find word operation program using file operation
+if a poem like twinkle twinkle little star and if target word is twinkle in this file ,
+then word is founded 
