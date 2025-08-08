@@ -1,0 +1,16 @@
+Total words in File: 35
+
+Total words in 1th Line : 7
+Total words in 2th Line : 14
+Total words in 3th Line : 2
+Total words in 4th Line : 6
+Total words in 5th Line : 6
+
+Total char in File: 207
+
+
+Total char in 1th Line : 37
+Total char in 2th Line : 73
+Total char in 3th Line : 10
+Total char in 4th Line : 44
+Total char in 5th Line :  43
