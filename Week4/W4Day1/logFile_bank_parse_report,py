@@ -1,0 +1,93 @@
+import logging
+
+Log_File = 'Week4/W4Day1/logfile_Result_bank_report.txt'
+
+class Bank:
+    balance = 0
+    
+    def __init__(self, user, accountNo):
+        self.user = user
+        self.accountNo = accountNo
+        
+        logging.basicConfig(
+            filename=Log_File,
+            level=logging.DEBUG,
+            format='%(asctime)s - %(levelname)s - %(message)s'
+        )
+        
+        self.login()  # Auto login
+    
+    def login(self):
+        logging.info(f"User '{self.user}' logged in.")
+        print(f"User '{self.user}' logged in.")
+        
+    def deposit(self):
+        try:
+            amount = int(input("Enter Amount to Deposit: "))
+        except ValueError:
+            logging.error(f'Invalid Deposit Amount by {self.user}')
+            print("Invalid Deposit Amount")
+            return
+        
+        if amount <= 0:
+            logging.error(f'Invalid Deposit Amount by {self.user}: {amount}')
+            print("Invalid Deposit Amount")
+            return
+        
+        self.balance += amount
+        logging.info(f'{self.user} Deposited {amount} into Account Number {self.accountNo}')
+        print(f'Deposited {amount} into Account Number {self.accountNo}')
+        return self.balance
+            
+    def withDraw(self, amount):
+        try:
+            amount = int(amount)
+        except ValueError:
+            logging.error(f'Invalid Withdrawal Amount by {self.user}')
+            print("Invalid Withdrawal Amount")
+            return 
+        
+        if amount <= 0:
+            logging.error(f'Invalid Withdrawal Amount by {self.user}: {amount}')
+            print("Invalid Withdrawal Amount")
+            return 
+        
+        if amount > self.balance:
+            logging.error(f'Withdrawal Failed for {self.user}: Insufficient funds. Requested {amount}, Available {self.balance}')
+            print("Error: Insufficient Funds")
+            return
+        
+        self.balance -= amount
+        logging.info(f'{self.user} withdrew {amount} from Account Number {self.accountNo}')
+        print(f'Withdrew {amount} from Account Number {self.accountNo}')
+        return self.balance
+        
+    def balanceCheck(self):
+        logging.info(f'Balance of {self.user} is {self.balance}')
+        print(f'Balance of {self.user} is {self.balance}')
+        return self.balance
+    
+    def crash_system(self):
+        logging.critical("BANKING SYSTEM CRASHED! Immediate action required!")
+        
+    def parse_log(self):
+        summary = {"DEBUG": 0, "INFO": 0, "WARNING": 0, "ERROR": 0, "CRITICAL": 0}
+        
+        with open(Log_File, "r") as f:
+            for line in f:
+                for type_log in summary.keys():
+                    if f" - {type_log} - " in line:
+                        summary[type_log] += 1
+                
+        print("\n--- Log Report ---")
+        print(summary)
+        
+        print('\n--- Error Count ---')
+        print("Error:", summary['ERROR'])
+
+
+user1 = Bank('jay', 2526)
+user1.deposit()
+user1.withDraw(2000)   
+user1.balanceCheck()
+user1.parse_log()

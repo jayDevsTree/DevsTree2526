@@ -23,7 +23,7 @@ with open('Week4/W4Day1/sampleFileCSV.csv', 'r') as f:
 def append_csv(): 
     l1 = [['1@2@3'], ['4@5@6'], ['7@8@9']]
     with open('Week4/W4Day1/sampleFileCSV.csv', 'a+') as f:
-        wo = csv.writer(f,delimiter='@')
+        wo = csv.writer(f,delimiter='@')  
         wo.writerows(l1)
         
         f.seek(0)
