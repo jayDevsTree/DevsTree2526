@@ -1,0 +1,26 @@
+[   
+    {
+        "user": {
+            "name": "Jay",
+            "details": {
+                "age": 19,
+                "city": "Ahmedabad"
+            }
+        },
+        "temp": "delete this"
+
+    },
+    {
+        "user": {
+            "name": "Dev",
+            "details": {
+                "age": 30,
+                "city": "Mumbai"
+            }
+        },
+        "settings": {
+            "theme": "dark"
+        }
+    }
+
+]
