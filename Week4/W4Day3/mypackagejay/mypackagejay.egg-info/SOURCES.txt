@@ -1,0 +1,5 @@
+setup.py
+mypackagejay.egg-info/PKG-INFO
+mypackagejay.egg-info/SOURCES.txt
+mypackagejay.egg-info/dependency_links.txt
+mypackagejay.egg-info/top_level.txt
