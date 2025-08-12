@@ -1,13 +1,35 @@
+import csv
+
+with open('carCompaines.csv','r') as f:
+    reader = csv.DictReader(f)
+    comapany_list = [row['company'].lower() for row in reader]
+    
+class validNameAndComapany(Exception):
+    def __init__(self, message):
+        self.message = message
+    def __str__(self):
+        return f'{self.message}'
+    
+class validNameAndComapnyChecker:
+    @staticmethod
+    def invalidName():
+        return validNameAndComapany("Invalid model! Enter Valid Model.")
+    
+    @staticmethod
+    def invalidCompany():
+        return validNameAndComapany("Invalid Company! Enter Valid Company.")
+    
+    
+   
+
 class Car:
     
-    def __init__(self, name, company, model, year):
-        self.name = name
+    def __init__(self, company, model, year):
         self.company = company
         self.model = model
         self.year = year
 
     def display_info(self):
-        print(f'Name: {self.name}')
         print(f'Company: {self.company}')
         print(f'Model: {self.model}')
         print(f'Year: {self.year}')
@@ -16,11 +38,31 @@ class Car:
 class Dealership:
     def __init__(self):
         self.inventory = {}
+        
 
     def input_car_details(self):
-        name = input("Enter Name:")
-        company = input("Enter Company:")
-        model = (input("Enter model:"))
+        IsvalidName = False
+        IsvalidComp = False
+        while not IsvalidComp:
+            try:
+                company = input("Enter Company:")
+                if company.lower() not in comapany_list:
+                    raise validNameAndComapnyChecker.invalidCompany()
+                IsvalidComp = True
+            except validNameAndComapany as valid:
+                print("[Error]: ",valid)
+                print("Enter a valid company")
+            
+        while not IsvalidName:
+            try:
+                model = input("Enter model:")
+                if model.lower() in comapany_list:
+                    raise validNameAndComapnyChecker.invalidName()
+                IsvalidName = True
+            except validNameAndComapany as valid:
+                print("[Error]: ",valid)
+                print("Enter a valid model")
+                
 
         while True:
             try:
@@ -32,13 +74,13 @@ class Dealership:
             except ValueError:
                 print("Invalid Year! Enter Valid Year.")
 
-        return Car(name, company, model, year)
+        return Car(company, model, year)
 
     def add_car(self):
         car_input = self.input_car_details()
-        if car_input.name not in self.inventory:
-            self.inventory[car_input.name] = car_input
-            print(f'Successfully Added {car_input.name} in Inventory')
+        if car_input.model not in self.inventory:
+            self.inventory[car_input.model] = car_input
+            print(f'Successfully Added {car_input.model} in Inventory')
         else:
             print("Car already exists!")
 
