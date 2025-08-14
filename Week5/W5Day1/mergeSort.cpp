@@ -62,9 +62,7 @@ void mergeSort(vector<int> &arr, int st , int end){
 
 int main(){
     vector<int> arr = {2,65,11,23,5,8,33,99};
-
     mergeSort(arr,0,arr.size()-1);
     printArray(arr);
-
     return 0;
 }
