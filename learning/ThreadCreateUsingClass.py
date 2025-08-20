@@ -17,6 +17,7 @@ class myClass(threading.Thread):
             time.sleep(1)
             print(f'{vid} is sent.')
             
+
 t1 = myClass(True)
 t1.start()
 
