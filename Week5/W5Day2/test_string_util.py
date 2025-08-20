@@ -24,13 +24,16 @@ class testStringUtils(unittest.TestCase):
     def test_count_empty_string(self):
         self.assertEqual(string_utils.count_vowels(''), 0)
         self.assertEqual(string_utils.count_consonants(''), 0)
+        
     
     def test_empty_numbers(self):
         self.assertEqual(string_utils.num_palindrome(''), 'Not a Number')
     def  test_number_palindrome(self):
         self.assertEqual(string_utils.num_palindrome(12321), True)
-        self.assertEqual(string_utils.num_palindrome(1231), False)
+        self.assertEqual(string_utils.num_palindrome(1231), False) 
         
         
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()  
+    
+    
