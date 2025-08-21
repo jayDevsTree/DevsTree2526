@@ -13,6 +13,7 @@ def get_news():
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey={STOCK_API}"
     res = requests.get(url)
     data = res.json()
+    
    
     
     
