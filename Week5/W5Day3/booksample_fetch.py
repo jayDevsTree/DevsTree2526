@@ -15,10 +15,14 @@ def book_fetch():
         print(allData['data']['data'][0]['id']) # output: 2
         print(allData['data']['data'][2]['volumeInfo']['authors'][0]) # Matt Frisbie
     else:
+        print("request Not found!")
+    
         raise Exception("Not Found!")
     
 
 if __name__ == '__main__':
  
     book_fetch()
+    
+
 
