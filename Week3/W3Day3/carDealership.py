@@ -24,7 +24,9 @@ class validNameAndComapnyChecker:
 
 # Car Class
 class Car:
-    def __init__(self, company, model, year):
+    
+    def __init__(self, name, company, model, year):
+        self.name = name
         self.company = company
         self.model = model
         self.year = year
@@ -155,6 +157,8 @@ def Controlcode():
         else:
             print("Thank You!")
             break
+
+
 
 if __name__ == '__main__':
     Controlcode()
