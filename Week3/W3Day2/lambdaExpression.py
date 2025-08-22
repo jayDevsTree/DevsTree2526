@@ -12,17 +12,16 @@ l1 = [2,3,1,7,9,5]
 secondLargest_l1 = lambda num : sorted(l1)[-2] 
 print(secondLargest_l1(l1))
 
-l2 = [[3,4,1,0],[8,99,32],[2,4,5] ]
+l2 = [[3,4,1,0],[8,99,32],[2,4,5]]
 
 sort_sublist = lambda original_list : [sorted(sublist) for sublist in original_list]
 secondLargest_l2 = lambda originalList :[ secondLargest_sublist[-2] for secondLargest_sublist in sort_sublist(originalList)]  
 print(secondLargest_l2(l2))
 
 tables = [i for i in range(1,11)]
-
 print(tables)
 
-table_print = lambda number:[number*iterable for iterable in range(1,11)]
+table_print = lambda number : [number*iterable for iterable in range(1,11)]
 print(table_print(5))
 
 numbers = [ 1,2,3,4,5]
