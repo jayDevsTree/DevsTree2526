@@ -1,0 +1,9 @@
+**Task Brief:**
+Today’s focus was on JSON operations and building a **File-Based Task Management System** with extreme error handling. The system performs full CRUD operations on tasks stored in a JSON file, supports updates and exports, and maintains a log file (`tasks_log.log`) to track all actions. It includes custom exceptions for input validation, uses the `json` and `os` modules, and ensures only valid data structures are stored. Additionally, I studied sorting algorithms (**Merge Sort** and **Quick Sort**) along with their space and time complexities.
+
+
+Task Brief:
+Today’s work included learning about memory addresses, shallow copy, and deep copy, exploring decorators with different operations, and studying closures and partial functions. Practiced converting lists to JSON, performing various JSON operations, and started threading—creating threads using functions and classes, and using `start()`, `join()`, and `sleep()` for control, along with basic multithreading tasks. Also took a basic overview of SQLite and how to integrate a database with Python.
+
+
+https://api.freeapi.app/
