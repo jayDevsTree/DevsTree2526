@@ -1,2 +1,0 @@
-if sentence == "".strip():
-        r

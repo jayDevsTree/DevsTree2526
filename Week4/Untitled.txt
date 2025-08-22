@@ -1,0 +1,432 @@
+
+# import json
+# import os
+# import logging
+
+# logging.basicConfig(filename='tasks_log.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# tasks = []
+
+# data = {
+#     "id": None,
+#     "title": None,
+#     "description": None,
+#     "status": None
+# }
+
+# file_path = "tasks.json"
+
+# class EmptyValueException(Exception):
+#     def __init__(self, message):
+#         self.message = message
+        
+#     def __str__(self):
+#         return f'{self.message}'
+    
+# class EmptyValueHelper:
+#     @staticmethod
+#     def empty_title():
+#         return EmptyValueException("Task title cannot be empty! Re-enter title:")
+    
+#     @staticmethod
+#     def empty_description():
+#         return EmptyValueException("Task description cannot be empty! Re-enter description:")
+    
+#     @staticmethod
+#     def empty_status():
+#         return EmptyValueException("Task status cannot be empty! Re-enter status:")
+
+# class Task:
+    
+#     def read_tasks_from_file():
+#         if os.path.exists(file_path):
+#             with open(file_path, 'r') as f:
+#                 tasks[:] = json.load(f)
+#         else:
+#             logging.critical(f"File does not exist...")
+#             tasks[:] = []
+#         return tasks
+
+#     def valid_task():
+         
+#         data['id'] = len(tasks) + 1
+        
+#         while True:
+#             try:
+#                 data['title'] = input("Enter Task Title: ")
+#                 if data['title'] == "":
+#                     raise EmptyValueHelper.empty_title()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered Empty Title Value...")
+#                 print(e)
+
+#         while True:
+#             try:
+#                 data['description'] = input("Enter Task Description: ")
+#                 if data['description'] == "":
+#                     raise EmptyValueHelper.empty_description()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered empty Description Value...")
+#                 print(e)
+
+#         while True:
+#             try:
+#                 print("Status options:[Ongoing, Completed, Pending] or Custom Status")
+#                 data['status'] = input("Enter Task Status: ")
+#                 if data['status'] == "":
+#                     raise EmptyValueHelper.empty_status()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered empty Status Value...")
+#                 print(e)
+
+#         tasks.append(data.copy())  # Store a copy to avoid overwrite
+#         Task.write_task()
+
+#     # def valid_id():
+#     #     Task.read_tasks_from_file()
+#     #     while True:
+#     #         user_id = (input("Enter the task id: "))
+#     #         try:
+#     #             valid_user_id = int(user_id)
+#     #             if valid_user_id <= 0 or valid_user_id > len(tasks):
+#     #                 print("Invalid input! Please enter a valid task id.")
+#     #             break
+#     #         except ValueError:
+#     #             logging.error(f"UserId {data['id']} entered invalid input...")
+#     #             print("Invalid input. Please enter a valid integer.") 
+#     #     return valid_user_id
+#     def valid_id():
+#         Task.read_tasks_from_file()
+#         while True:
+#             user_id = input("Enter the task id: ")
+#             try:
+#                 valid_user_id = int(user_id)
+#                 if valid_user_id <= 0 or valid_user_id > len(tasks):
+#                     print("Invalid input! Please enter a valid task id.")
+#                     continue  # stay in loop
+#                 return valid_user_id
+#             except ValueError:
+#                 logging.error(f"User entered invalid input for task id: {user_id}")
+#                 print("Invalid input. Please enter a valid integer.")
+
+
+
+#     def update_task(update_id):
+#         # update_id = Task.valid_id()
+#         for task in tasks:
+#             if task['id'] == update_id:
+#                 Task.valid_task()
+#                 print("Task updated successfully.")
+#                 return
+#         print("Task not found.")
+            
+#     def delete_task(delete_id):
+#         Task.read_tasks_from_file()
+#         # delete_id = Task.valid_id()
+#         for task in tasks:
+#             if task['id'] == delete_id:
+#                 tasks.remove(task)
+#                 Task.write_task()
+#                 print("Task deleted successfully.")
+#                 return
+#         print("Task not found.")
+
+#     def view_task():
+#         print("Tasks:")
+#         Task.read_tasks_from_file()
+#         print(tasks)
+    
+#     def write_task():
+#         with open(file_path, 'w') as file:
+#             json.dump(tasks, file, indent=4)
+            
+#     def add_task():
+#         Task.read_tasks_from_file()
+#         Task.valid_task()
+#         print("Task Added Successfully!")
+        
+        
+# def wrapped_task_class():
+    
+    
+#     while True:
+#         print()
+#         print("Task Management system started...")
+#         logging.info(f"UserId {data['id']} strtarted Task Management system...")
+
+#         print('''1 --> Add Task
+# 2 --> View Task
+# 3 --> Update Task
+# 4 --> Delete Task
+# (press anything else to Exit)''')
+
+        
+#         user_choice = input("Enter Choice: ")
+
+#         try:
+#             user_choice = int(user_choice)
+#         except ValueError:
+#             logging.critical("User entered invalid input...")
+#             logging.info(f"UserId {data['id']} exited Task Management system...")
+#             print("Thank You!")
+#             break
+        
+#         # choice = input("Enter Choice:")
+#         # valid_choice()
+        
+#         if user_choice == 1:
+#             logging.info(f"UserID {data['id']} added a task...")
+#             Task.add_task()
+#         elif user_choice == 2:
+#             logging.info(f"UserID {data['id']} viewed all tasks...")
+#             Task.view_task()
+#         elif user_choice == 3:
+#             logging.info(f"UserID {data['id']} updated a task...")
+#             update_id = Task.valid_id()
+#             Task.update_task(update_id)
+#         elif user_choice == 4:
+#             logging.info(f"UserID {data['id']} deleted a task...")
+#             delete_id = Task.valid_id()
+#             Task.delete_task(delete_id)
+#         else:
+#             logging.info(f"UserId {data['id']} exited Task Management system...")
+#             print("Thank You!")
+#             break
+            
+#     print("Task Management system closed...")
+    
+# if __name__ == "__main__": 
+#     Task.read_tasks_from_file()
+#     wrapped_task_class()
+
+
+
+#------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------
+#original code         
+
+
+# import json
+# import os
+# import logging
+
+# logging.basicConfig(filename='tasks_log.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# tasks = []
+
+# data = {
+#     "id": None,
+#     "title": None,
+#     "description": None,
+#     "status": None
+# }
+
+# file_path = "tasks.json"
+
+# class EmptyValueException(Exception):
+#     def __init__(self, message):
+#         self.message = message
+        
+#     def __str__(self):
+#         return f'{self.message}'
+    
+# class EmptyValueHelper:
+#     @staticmethod
+#     def empty_title():
+#         return EmptyValueException("Task title cannot be empty! Re-enter title:")
+    
+#     @staticmethod
+#     def empty_description():
+#         return EmptyValueException("Task description cannot be empty! Re-enter description:")
+    
+#     @staticmethod
+#     def empty_status():
+#         return EmptyValueException("Task status cannot be empty! Re-enter status:")
+
+# class Task:
+    
+#     def read_tasks_from_file():
+#         if os.path.exists(file_path):
+#             with open(file_path, 'r') as f:
+#                 tasks[:] = json.load(f)
+#         else:
+#             logging.critical(f"File does not exist...")
+#             tasks[:] = []
+#         return tasks
+
+#     def valid_task():
+         
+#         data['id'] = len(tasks) + 1
+        
+#         while True:
+#             try:
+#                 data['title'] = input("Enter Task Title: ")
+#                 if data['title'] == "":
+#                     raise EmptyValueHelper.empty_title()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered Empty Title Value...")
+#                 print(e)
+
+#         while True:
+#             try:
+#                 data['description'] = input("Enter Task Description: ")
+#                 if data['description'] == "":
+#                     raise EmptyValueHelper.empty_description()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered empty Description Value...")
+#                 print(e)
+
+#         while True:
+#             try:
+#                 print("Status options:[Ongoing, Completed, Pending] or Custom Status")
+#                 data['status'] = input("Enter Task Status: ")
+#                 if data['status'] == "":
+#                     raise EmptyValueHelper.empty_status()
+#                 break
+#             except EmptyValueException as e:
+#                 logging.warning(f"UserId {data['id']} entered empty Status Value...")
+#                 print(e)
+
+#         tasks.append(data.copy())  # Store a copy to avoid overwrite
+#         Task.write_task()
+
+#     # def valid_id():
+#     #     Task.read_tasks_from_file()
+#     #     while True:
+#     #         user_id = (input("Enter the task id: "))
+#     #         try:
+#     #             valid_user_id = int(user_id)
+#     #             if valid_user_id <= 0 or valid_user_id > len(tasks):
+#     #                 print("Invalid input! Please enter a valid task id.")
+#     #             break
+#     #         except ValueError:
+#     #             logging.error(f"UserId {data['id']} entered invalid input...")
+#     #             print("Invalid input. Please enter a valid integer.") 
+#     #     return valid_user_id
+#     def valid_id():
+#         Task.read_tasks_from_file()
+#         while True:
+#             user_id = input("Enter the task id: ")
+#             try:
+#                 valid_user_id = int(user_id)
+#                 if valid_user_id <= 0 or valid_user_id > len(tasks):
+#                     print("Invalid input! Please enter a valid task id.")
+#                     continue  # stay in loop
+#                 return valid_user_id
+#             except ValueError:
+#                 logging.error(f"User entered invalid input for task id: {user_id}")
+#                 print("Invalid input. Please enter a valid integer.")
+
+
+
+#     def update_task(update_id):
+#         # update_id = Task.valid_id()
+#         for task in tasks:
+#             if task['id'] == update_id:
+#                 Task.valid_task()
+#                 print("Task updated successfully.")
+#                 return
+#         print("Task not found.")
+            
+#     def delete_task(delete_id):
+#         Task.read_tasks_from_file()
+#         # delete_id = Task.valid_id()
+#         for task in tasks:
+#             if task['id'] == delete_id:
+#                 tasks.remove(task)
+#                 Task.write_task()
+#                 print("Task deleted successfully.")
+#                 return
+#         print("Task not found.")
+
+#     def view_task():
+#         print("Tasks:")
+#         Task.read_tasks_from_file()
+#         print(tasks)
+    
+#     def write_task():
+#         with open(file_path, 'w') as file:
+#             json.dump(tasks, file, indent=4)
+            
+#     def add_task():
+#         Task.read_tasks_from_file()
+#         Task.valid_task()
+#         print("Task Added Successfully!")
+        
+        
+# def wrapped_task_class():
+    
+    
+#     while True:
+#         print()
+#         print("Task Management system started...")
+#         logging.info(f"UserId {data['id']} strtarted Task Management system...")
+
+#         print('''1 --> Add Task
+# 2 --> View Task
+# 3 --> Update Task
+# 4 --> Delete Task
+# (press anything else to Exit)''')
+
+        
+#         user_choice = input("Enter Choice: ")
+
+#         try:
+#             user_choice = int(user_choice)
+#         except ValueError:
+#             logging.critical("User entered invalid input...")
+#             logging.info(f"UserId {data['id']} exited Task Management system...")
+#             print("Thank You!")
+#             break
+        
+#         # choice = input("Enter Choice:")
+#         # valid_choice()
+        
+#         if user_choice == 1:
+#             logging.info(f"UserID {data['id']} added a task...")
+#             Task.add_task()
+#         elif user_choice == 2:
+#             logging.info(f"UserID {data['id']} viewed all tasks...")
+#             Task.view_task()
+#         elif user_choice == 3:
+#             logging.info(f"UserID {data['id']} updated a task...")
+#             update_id = Task.valid_id()
+#             Task.update_task(update_id)
+#         elif user_choice == 4:
+#             logging.info(f"UserID {data['id']} deleted a task...")
+#             delete_id = Task.valid_id()
+#             Task.delete_task(delete_id)
+#         else:
+#             logging.info(f"UserId {data['id']} exited Task Management system...")
+#             print("Thank You!")
+#             break
+            
+#     print("Task Management system closed...")
+    
+# if __name__ == "__main__": 
+#     Task.read_tasks_from_file()
+#     wrapped_task_class()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
