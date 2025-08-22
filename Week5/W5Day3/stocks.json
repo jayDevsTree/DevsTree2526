@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "data": {
+        "page": 1,
+        "limit": 2,
+        "totalPages": 7,
+        "previousPage": false,
+        "nextPage": true,
+        "totalItems": 14,
+        "currentPageItems": 2,
+        "data": [
+            {
+                "Symbol": "TATACHEM",
+                "Name": "Tata Chemicals Limited",
+                "MarketCap": "\u20b9 28,355 Cr.",
+                "CurrentPrice": "\u20b9 1,113"
+            },
+            {
+                "Symbol": "TATACOFFEE",
+                "Name": "Tata Coffee Limited",
+                "MarketCap": "\u20b9 5,993 Cr.",
+                "CurrentPrice": "\u20b9 321"
+            }
+        ]
+    },
+    "message": "Stocks fetched successfully",
+    "success": true
+}
