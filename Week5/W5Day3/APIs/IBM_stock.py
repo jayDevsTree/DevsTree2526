@@ -159,9 +159,11 @@ def print_info(info):
     print(f'Close Value: {info["close_val"]}')
     print(f'Volume Value: {info["volume_val"]}')
     
-url =set_news_url()
-setted_time,setted_user_time =set_time_stocks()
-print_info(fetch_stocks_detail())
+
+if __name__ == "__main__":
+    url =set_news_url()
+    setted_time,setted_user_time =set_time_stocks()
+    print_info(fetch_stocks_detail())
         
 
         
