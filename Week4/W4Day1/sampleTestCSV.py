@@ -11,9 +11,9 @@ with open('Week4/W4Day1/sampleFileCSV.csv', 'r') as f:
     for row in data:
         print(row)
         
-    print("printing data in column by column")
-    for col in zip(*data):
-        print(col)
+    # print("printing data in column by column")
+    # for col in zip(*data):
+    #     print(col)
         
     # print()
     # print("print data of colum 1")

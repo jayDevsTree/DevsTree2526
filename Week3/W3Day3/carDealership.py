@@ -1,32 +1,30 @@
 import csv
 
-# Load company list from CSV
-with open('carCompaines.csv', 'r') as f:
+with open('carCompaines.csv','r') as f:
     reader = csv.DictReader(f)
     comapany_list = [row['company'].lower() for row in reader]
-
-# Custom Exception
+    
 class validNameAndComapany(Exception):
     def __init__(self, message):
         self.message = message
     def __str__(self):
         return f'{self.message}'
-
-# Exception Checker Class
+    
 class validNameAndComapnyChecker:
     @staticmethod
     def invalidName():
         return validNameAndComapany("Invalid model! Enter Valid Model.")
-
+    
     @staticmethod
     def invalidCompany():
         return validNameAndComapany("Invalid Company! Enter Valid Company.")
+    
+    
+   
 
-# Car Class
 class Car:
     
-    def __init__(self, name, company, model, year):
-        self.name = name
+    def __init__(self, company, model, year):
         self.company = company
         self.model = model
         self.year = year
@@ -40,10 +38,31 @@ class Car:
 class Dealership:
     def __init__(self):
         self.inventory = {}
+        
 
     def input_car_details(self):
         IsvalidName = False
         IsvalidComp = False
+        while not IsvalidComp:
+            try:
+                company = input("Enter Company:")
+                if company.lower() not in comapany_list:
+                    raise validNameAndComapnyChecker.invalidCompany()
+                IsvalidComp = True
+            except validNameAndComapany as valid:
+                print("[Error]: ",valid)
+                print("Enter a valid company")
+            
+        while not IsvalidName:
+            try:
+                model = input("Enter model:")
+                if model.lower() in comapany_list:
+                    raise validNameAndComapnyChecker.invalidName()
+                IsvalidName = True
+            except validNameAndComapany as valid:
+                print("[Error]: ",valid)
+                print("Enter a valid model")
+                
 
         # Company validation
         while not IsvalidComp:
