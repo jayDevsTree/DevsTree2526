@@ -10,6 +10,7 @@ def calculate_average(numbers):
     total = 0
     count = len(numbers)
 
+
     for num in numbers:
         pdb.set_trace()  # Debugging will pause here
         total += num
@@ -24,3 +25,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

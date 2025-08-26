@@ -1,9 +1,9 @@
+        
 import requests
 import os
 import json
 import datetime
 from dotenv import load_dotenv
-from securityCheck import safe_request
 
 def set_news_url():
     load_dotenv('../allAPI.env')
@@ -13,14 +13,14 @@ def set_news_url():
     if not STOCK_API:
         print("ERROR: API key not found in allAPI.env")
         exit()  
-    url = f'{BASE_URL}{STOCK_API}'
+    url = f'{BASE_URL}+{STOCK_API}'
     # data = requests.get(url).json()
     # print(data)
     return url
 
 def set_time_stocks():
     now = datetime.datetime.now()
-    prev_day = now - datetime.timedelta(days = 3)# only available 22 august data so dynamic logic not available in this api
+    prev_day = now - datetime.timedelta(days = 1)
     
     def show_user_prev_day():
         if set_am_pm(user_hours) == 'PM':
@@ -105,43 +105,44 @@ def set_time_stocks():
           
     if comp_hours == None or miniutes == None:
         print("Invalid Input")
-        
+     
+    
     # show_prev_day()
+    
     return  show_computer_fetch_data(),show_user_prev_day()
     
 
-def fetch_stocks_detail(url):
-    data = safe_request(url, 3, 2, 5)  
-    
-    
-    if not data:
-        print("Failed to fetch stock details after retries.")
-        return None
+def fetch_stocks_detail():
+    response = requests.get(url)
+    data = response.json()
     stocks_various_price_values=data['Time Series (5min)'][setted_time]
     
-    info = data['Meta Data']['1. Information']
-    company = data['Meta Data']['2. Symbol']
-    last_refresh = data['Meta Data']['3. Last Refreshed']
-    data_Interval = data['Meta Data']['4. Interval']
-    
-    open_val = stocks_various_price_values['1. open']
-    high_val = stocks_various_price_values['2. high']
-    low_val = stocks_various_price_values['3. low']
-    close_val = stocks_various_price_values['4. close']
-    volume_val = stocks_various_price_values['5. volume']
+    if response.status_code == 200:
+        info = data['Meta Data']['1. Information']
+        company = data['Meta Data']['2. Symbol']
+        last_refresh = data['Meta Data']['3. Last Refreshed']
+        data_Interval = data['Meta Data']['4. Interval']
         
-    return{
-        'info':info,
-        'company':company,
-        'last_refresh':last_refresh,
-        'data_Interval':data_Interval,
-        'open_val':open_val,
-        'high_val':high_val,
-        'low_val':low_val,
-        'close_val':close_val,
-        'volume_val':volume_val
-    }
-    
+        open_val = stocks_various_price_values['1. open']
+        high_val = stocks_various_price_values['2. high']
+        low_val = stocks_various_price_values['3. low']
+        close_val = stocks_various_price_values['4. close']
+        volume_val = stocks_various_price_values['5. volume']
+        
+        return{
+            'info':info,
+            'company':company,
+            'last_refresh':last_refresh,
+            'data_Interval':data_Interval,
+            'open_val':open_val,
+            'high_val':high_val,
+            'low_val':low_val,
+            'close_val':close_val,
+            'volume_val':volume_val
+        }
+    else:
+        response.raise_for_status()
+        return None
     
 def print_info(info):
     print(f'Information: {info["info"]}')
@@ -163,9 +164,4 @@ def print_info(info):
 if __name__ == "__main__":
     url =set_news_url()
     setted_time,setted_user_time =set_time_stocks()
-    stocks_info= fetch_stocks_detail(url)
-    if stocks_info :
-        print_info(fetch_stocks_detail(url))
-        
-
-        
+    print_info(fetch_stocks_detail())

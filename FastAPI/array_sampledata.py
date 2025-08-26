@@ -6,6 +6,7 @@ app = FastAPI()
 
 my_posts= [{"title":"book","content":"this is a Book sample","id":1},
            {"title":"Movie", "content":"Avatar the last air bender", "id": 2}]
+
 class post(BaseModel):
     title : str
     content: str
